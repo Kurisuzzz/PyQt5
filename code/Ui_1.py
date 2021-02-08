@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QDesktopWidget
 import sys
 
 class Ui_MainWindow(object):
@@ -34,13 +35,21 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Sakura")) # 改变窗口名
         self.pushButton.setText(_translate("MainWindow", "PushButton"))
-
 if __name__ == '__main__':
   app = QtWidgets.QApplication(sys.argv)
   MainWindow = QtWidgets.QMainWindow()
   ui = Ui_MainWindow()
   ui.setupUi(MainWindow)
+  screen = QDesktopWidget().screenGeometry() ## 获取宽和高 
+  width = screen.width()
+  height = screen.height()
+  #print(width, height)
+  icon = QtGui.QIcon()
+  icon.addPixmap(QtGui.QPixmap('PyQt5\code\w1.ico'), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+  MainWindow.setStyleSheet('#MainWindow{background-color:red
+        background}')
+  MainWindow.setWindowIcon(icon)
   MainWindow.show()
   sys.exit(app.exec_())
