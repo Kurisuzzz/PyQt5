@@ -23,9 +23,9 @@ class Ui_Dialog(object):
         self.radioButton = QtWidgets.QRadioButton(Dialog)
         self.radioButton.setGeometry(QtCore.QRect(130, 160, 132, 22))
         self.radioButton.setObjectName("radioButton")
-
         self.retranslateUi(Dialog)
-        self.buttonBox.accepted.connect(Dialog.accept)
+        self.buttonBox.clicked.connect(Dialog.accept)
+        self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
@@ -33,3 +33,5 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.radioButton.setText(_translate("Dialog", "RadioButton"))
+    def accept(self):
+        print("Hello world!")
