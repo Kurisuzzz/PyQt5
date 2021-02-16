@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\johan\Desktop\PyQt5\PyQt5\code\1.ui'
+# Form implementation generated from reading ui file 'f:\360MoveData\Users\Dell\Desktop\pyqt5\PyQt5\code\test_for_hyperlink\hyperlink.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.2
 #
@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDesktopWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
+from PyQt5.QtGui import QPixmap
 import sys
 
 class Ui_MainWindow(object):
@@ -18,12 +20,14 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(200, 230, 112, 34))
-        self.pushButton.setObjectName("pushButton")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(230, 200, 91, 61))
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setWordWrap(False)
+        self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 30))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -35,22 +39,14 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Sakura")) # 改变窗口名
-        self.pushButton.setText(_translate("MainWindow", "PushButton"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "<a href = 'https://www.baidu.com'>百度</a>"))
+        self.label.setOpenExternalLinks(True)
+        self.label.setPixmap(QPixmap('PyQt5\lovely.jpg'))
 if __name__ == '__main__':
-  app = QtWidgets.QApplication(sys.argv)
-  MainWindow = QtWidgets.QMainWindow()
-  ui = Ui_MainWindow()
-  ui.setupUi(MainWindow)
-  screen = QDesktopWidget().screenGeometry() ## 获取宽和高 
-  width = screen.width()
-  height = screen.height()
-  #print(width, height)
-  icon = QtGui.QIcon()
-  icon.addPixmap(QtGui.QPixmap('PyQt5\code\w1.ico'), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-  MainWindow.setStyleSheet('#MainWindow{background-image:url(code/1.jpg)}')
-  MainWindow.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
-  MainWindow.setWindowFlags(QtCore.Qt.Dialog)
-  MainWindow.setWindowIcon(icon)
-  MainWindow.show()
-  sys.exit(app.exec_())
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
